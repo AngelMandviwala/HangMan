@@ -6,10 +6,14 @@ namespace Hangman.Core.Game
     public class HangmanGame
     {
         private GallowsRenderer _renderer;
+        private string[] _guesswords = new string[] {"","","","","","","","","","","","","","","","","","","",""};
 
         public HangmanGame()
         {
             _renderer = new GallowsRenderer();
+
+            int wordLength = _guesswords[0].Length;
+
         }
 
         public void Run()
