@@ -17,7 +17,7 @@ namespace Hangman.Core.Game
             Random randomword = new Random();
             var index = randomword.Next(0, 19);
              guessword = _guesswords[index];
-            _letterplacement = guessword.ToCharArray();
+            //_letterplacement = guessword.ToCharArray();
 
 
             //char[] guess = new char[guessword.Length];
@@ -38,10 +38,11 @@ namespace Hangman.Core.Game
         {
             _renderer.Render(5, 5, 6);
 
-            for (int i = 0; i < guessword.Length; i++)
-            { 
-                _letterplacement[i] = '_';
-            }
+            GuessingWord game = new
+            //for (int i = 0; i < guessword.Length; i++)
+            //{ 
+            //    _letterplacement[i] = '-';
+            //}
 
 
             Console.SetCursorPosition(0, 13);
