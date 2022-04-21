@@ -17,32 +17,20 @@ namespace Hangman.Core.Game
             Random randomword = new Random();
             var index = randomword.Next(0, 19);
              guessword = _guesswords[index];
-            //_letterplacement = guessword.ToCharArray();
+            _letterplacement = guessword.ToCharArray();
 
 
-            //char[] guess = new char[guessword.Length];
-            //foreach (char c in guessword)
-            //    if (guessword.Contains(c))
-            //    {
-            //        Console.WriteLine(c);
-            //        _rounds++;
-            //    }
-            //else
-            //{
-            //        Console.WriteLine(_letterplacement);   
-            //}
-            //_counter++;
         }
 
         public void Run()
         {
             _renderer.Render(5, 5, 6);
 
-            GuessingWord game = new
-            //for (int i = 0; i < guessword.Length; i++)
-            //{ 
-            //    _letterplacement[i] = '-';
-            //}
+           
+            for (int i = 0; i < guessword.Length; i++)
+            {
+                _letterplacement[i] = '-';
+            }
 
 
             Console.SetCursorPosition(0, 13);
