@@ -29,6 +29,8 @@ namespace Hangman.Core.Game
 
         public void Run()
         {
+            string letterplacement = string.Empty;
+
             for (int i = 0; i < guessword.Length; i++)
             {
                 _letterplacement[i] = '-';
@@ -49,27 +51,39 @@ namespace Hangman.Core.Game
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write("What is your next guess: ");
 
-
                 var nextGuess = char.Parse(Console.ReadLine());
+                //try
+                //{
+                //    nextGuess = char.Parse(Console.ReadLine());
+                //}
+                //catch (Exception ex)
+                //{
+                //    Console.Clear();
+                //    Console.WriteLine("PLease only enter letters.");
+                //    Console.ReadLine();
+                //    Console.Clear();
+                //    continue;
+                //}
 
 
                 bool correctGuess = false;
-
-                for(int l = 0; l < guessword.Length; l++)
                 {
-                    if(nextGuess == guessword[l])
+                    for (var l = 0; l < guessword.Length; l++)
                     {
-                        _letterplacement[l] = nextGuess;
-                        correctGuess = true;
-                      
+                        if (nextGuess == guessword[l])
+                        {
+                            _letterplacement[l] = nextGuess;
+                            correctGuess = true;
+
+                        }
                     }
-                }
 
-                if (!correctGuess)
-                {
-                    _numberoflives--;
+                    if (!correctGuess)
+                    {
+                        _numberoflives--;
 
-                    _renderer.Render(5, 5, _numberoflives);
+                        _renderer.Render(5, 5, _numberoflives);
+                    }
                 }
 
             }
@@ -82,15 +96,15 @@ namespace Hangman.Core.Game
                 Console.WriteLine("You have won!!!");
 
             }
-
-            else
+            if (letterPlacement != guessword)
             {
+
+
                 Console.SetCursorPosition(0, 20);
                 Console.WriteLine("\nYou have lost!!!");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("\nThe word you had to guess was: " + guessword);
             }
-
         }
 
     }
