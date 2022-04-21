@@ -77,12 +77,16 @@ namespace Hangman.Core.Game
 
             if (letterPlacement == guessword)
             {
+                Console.SetCursorPosition(0, 20);
                 Console.WriteLine("You have won!!!");
+
             }
 
             else
             {
+                Console.SetCursorPosition(0, 20);
                 Console.WriteLine("\nYou have lost!!!");
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("\nThe word you had to guess was: " + guessword);
             }
 
