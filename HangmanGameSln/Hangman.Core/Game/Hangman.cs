@@ -52,6 +52,7 @@ namespace Hangman.Core.Game
 
                 var nextGuess = char.Parse(Console.ReadLine());
 
+
                 bool correctGuess = false;
 
                 for(int l = 0; l < guessword.Length; l++)
