@@ -13,7 +13,8 @@ namespace Hangman.Core.Game
         private int _numberoflives = 6;
         private char[] _letterplacement;
         private string guessword;
- 
+        private string _userinput;
+        
         public HangmanGame()
         {
             _renderer = new GallowsRenderer();
@@ -46,21 +47,8 @@ namespace Hangman.Core.Game
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write("What is your next guess: ");
 
-                var nextGuess = char.Parse(Console.ReadLine());
-                //try
-                //{
-                //    nextGuess = char.Parse(Console.ReadLine());
-                //}
-                //catch (Exception ex)
-                //{
-                //    Console.Clear();
-                //    Console.WriteLine("PLease only enter letters.");
-                //    Console.ReadLine();
-                //    Console.Clear();
-                //    continue;
-                //}
-
-
+                var nextGuess = char.Parse(Console.ReadLine()); ;
+                
                 bool correctGuess = false;
                 {
                     for (var l = 0; l < guessword.Length; l++)
@@ -69,14 +57,12 @@ namespace Hangman.Core.Game
                         {
                             _letterplacement[l] = nextGuess;
                             correctGuess = true;
-
                         }
                     }
 
                     if (!correctGuess)
                     {
                         _numberoflives--;
-
                         _renderer.Render(5, 5, _numberoflives);
                     }
                 }
