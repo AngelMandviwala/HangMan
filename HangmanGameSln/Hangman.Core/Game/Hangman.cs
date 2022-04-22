@@ -13,14 +13,15 @@ namespace Hangman.Core.Game
         private int _numberoflives = 6;
         private char[] _letterplacement;
         private string guessword;
-        private bool _wrongletter = false;
-        private bool _correctletter = true;
+        //private bool _wrongletter = false;
+        //private bool _correctletter = true;
        
         
 
         public HangmanGame()
         {
             _renderer = new GallowsRenderer();
+
             Random randomword = new Random();
             var index = randomword.Next(0, 19);
              guessword = _guesswords[index];
@@ -44,10 +45,8 @@ namespace Hangman.Core.Game
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.Write("Your current guess: ");
                 Console.WriteLine(_letterplacement);
+
                 Console.SetCursorPosition(0, 15);
-
-
-
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write("What is your next guess: ");
 
@@ -85,21 +84,19 @@ namespace Hangman.Core.Game
                         _renderer.Render(5, 5, _numberoflives);
                     }
                 }
+                letterplacement = new string(_letterplacement);
 
+                if (letterplacement == guessword)
+                {
+                    Console.SetCursorPosition(0, 20);
+                    Console.WriteLine("You have won!!!");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    break;
+
+                }
             }
-
-            string letterPlacement = new string(_letterplacement);
-
-            if (letterPlacement == guessword)
+            if (letterplacement != guessword)
             {
-                Console.SetCursorPosition(0, 20);
-                Console.WriteLine("You have won!!!");
-
-            }
-            if (letterPlacement != guessword)
-            {
-
-
                 Console.SetCursorPosition(0, 20);
                 Console.WriteLine("\nYou have lost!!!");
                 Console.ForegroundColor = ConsoleColor.White;
