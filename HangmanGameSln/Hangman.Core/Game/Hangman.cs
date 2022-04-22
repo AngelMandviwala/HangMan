@@ -13,11 +13,7 @@ namespace Hangman.Core.Game
         private int _numberoflives = 6;
         private char[] _letterplacement;
         private string guessword;
-        //private bool _wrongletter = false;
-        //private bool _correctletter = true;
-       
-        
-
+ 
         public HangmanGame()
         {
             _renderer = new GallowsRenderer();
@@ -91,9 +87,8 @@ namespace Hangman.Core.Game
                     Console.SetCursorPosition(0, 20);
                     Console.WriteLine("You have won!!!");
                     Console.ForegroundColor = ConsoleColor.White;
-                    break;
-
                 }
+                
             }
             if (letterplacement != guessword)
             {
